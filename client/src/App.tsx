@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import type { User, Channel as StreamChannel } from 'stream-chat';
 import { useCreateChatClient, Chat, Channel, ChannelHeader, MessageInput, MessageList, Thread, Window } from 'stream-chat-react';
 
-const apiKey = 'w5d9w2kwrtj8';
+const apiKey = import.meta.env.VITE_API_KEY;
+if (!apiKey) {
+  throw new Error("REACT_APP_API_KEY is not defined well");
+}
+
 const userId = '1320026';
 const userName = 'james';
 const userToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTMyMDAyNiJ9.Zm8SkoTAe8iVRD097rgZTyxTHUV6lLyYPlluVFhYOnA';
